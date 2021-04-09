@@ -6,12 +6,25 @@
 
 using namespace std;
 
+bool find( const string &myString, const string &subString )
+{
+  if ( myString.substr( 0, subString.size() ) == subString ) {
+    return true;
+  }
+  if (subString.size() >= myString.size()) {
+    return false;
+  }
+  return find(myString.substr(1), subString);
+}
+
+
 int find_factorial(int n) {
   if (n <= 1) {
     return n;
   }
   return n * find_factorial(n-1);
 }
+
 
 int fib(int n) {
   // cout << "fib(" << n << ")" << endl;
@@ -44,21 +57,28 @@ int find_num(vector<int> data, int target) {
 
 int main() {
 
-
   // int f = find_factorial(5);
   // cout << f << endl;
 
-  srand (time(NULL));
+  cout << find("abcdef", "ce") << endl;
+  cout << find("abcdef", "cde") << endl;
+  cout << find("this is my string", "my") << endl;
+  cout << find("this is my string", "sting") << endl;
+
+  srand (time(NULL)); //seed random number generator
 
   vector<int> numbers;
   for (int i = 0; i < 20; i++) {
     // cout << fib(i) << endl;
-    int r = rand() % 10 + 1;
+    int rr = rand();
+    int r = rr % 10 + 1; //get random number between 1 and 10
     // cout << r << endl;
     numbers.push_back(r);
+
+    cout << rr << ", " << r << ", " << r/3 << ", " << (r % 3) << endl;
   }
-  
-  cout << recursive_find_num(numbers, 3, 0) << endl;
+
+  // cout << recursive_find_num(numbers, 3, 0) << endl;
   // cout << find_num(numbers, 3) << endl;
 
 }
