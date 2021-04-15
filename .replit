@@ -1,6 +1,2 @@
 language = "bash"
-<<<<<<< HEAD
 run = "g++ -o hw10 hw10.cpp && ./hw10"
-=======
-run = "g++ -o hw10 hw10.cpp && ./hw10"
->>>>>>> origin/main
